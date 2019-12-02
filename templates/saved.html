@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <p class="text-center" style="font-size: 30px;"><u>SAVED IDEAS</u></p>
+    <table class="table table-hover table-borderless mx-auto">
+        <tbody>
+            {% for idea in ideas %}
+                <tr>
+                    <td><p class="text-uppercase my-auto" style="font-size: 25px;">{{idea}}</p></td>
+                    <td class="float-right"><button class="btn btn-danger mt-auto">DELETE</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

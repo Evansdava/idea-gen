@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <p class="text-center" style="font-size: 30px;"><u>WORDS THAT CAN APPEAR</u></p>
+    <table class="table table-hover table-borderless col-md-4 mx-auto">
+        <tbody>
+            {% for word in words %}
+                <tr>
+                    <td><p class="text-uppercase text-muted my-auto" style="font-size: 25px;">{{word}}</p></td>
+                    <td class="float-right"><button class="btn btn-danger mt-auto">DELETE</button></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><button class="btn btn-success">ADD</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
