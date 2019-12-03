@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from random import choice
-# from pattern.text.en import pluralize
+from pattern.text.en import pluralize
 
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def index():
 
     base = choice(bases)
     noun = choice(nouns).strip()
-    idea = f"{base} but for {noun}"
+    idea = f"{base} but for {pluralize(noun)}"
     return render_template('index.html', idea=idea)
 
 
