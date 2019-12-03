@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from random import choice
-from pattern.text.en import pluralize
+# from pattern.text.en import pluralize
 
 
 app = Flask(__name__)
