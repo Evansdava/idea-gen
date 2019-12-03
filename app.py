@@ -17,7 +17,7 @@ def index():
 
     base = choice(bases)
     noun = choice(nouns).strip()
-    idea = f"{base} but for {noun}"
+    idea = f"{base} but for {noun}s"
     return render_template('index.html', idea=idea)
 
 
