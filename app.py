@@ -1,14 +1,20 @@
+import requests
+import os
+import json
 from flask import Flask, render_template
 from random import choice
 from pattern.text.en import pluralize
+from dotenv import load_dotenv
+load_dotenv()
 
-
+UNSPLASH_API_KEY = os.getenv("UNSPLASH_API_KEY")
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
     """Display the home page for generating ideas"""
+    key = UNSPLASH_API_KEY
     idea = ""
     with open('words/base.txt') as f:
         bases = f.readlines()
@@ -16,9 +22,18 @@ def index():
         nouns = f.readlines()
 
     base = choice(bases)
-    noun = choice(nouns).strip()
-    idea = f"{base} but for {pluralize(noun)}"
-    return render_template('index.html', idea=idea)
+    noun = pluralize(choice(nouns).strip())
+    idea = f"{base} but for {noun}"
+
+    params = {
+        "client_id": key,
+        "query": noun,
+    }
+
+    r = requests.get("https://api.unsplash.com/photos/random/", params=params)
+    img = json.loads(r.content)
+
+    return render_template('index.html', idea=idea, img=img)
 
 
 @app.route("/possibilities")
