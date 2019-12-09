@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <div class="row py-5 mt-5">
-        <div class="col-auto mx-auto">
-            <p class="text-uppercase text-center" style="font-size: 60px;">{{idea}}</p>
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid bg-image" style="--url: url({{img.urls.full}})">
+        <div class="container">
+            <div class="row py-5 mt-5">
+                <div class="col-auto mx-auto">
+                    <p class="text-uppercase text-center" style="font-size: 60px;">{{idea}}</p>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-auto mx-auto">
+                    <a href="/"><button type="button" class="btn btn-lg btn-primary">GIVE ME ANOTHER</button></a>
+                </div>
+            </div>
+            <div class="row pb-5">
+                <div class="col-auto mx-auto">
+                    <button class="btn btn-info">SAVE THIS ONE</button>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-auto mx-auto">
+                    {% filter upper %}
+                    <a href="{{img.links.html}}"><p>PHOTO BY {{img.user.name}} ON UNSPLASH</p></a>
+                    {% endfilter %}
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row py-5">
-        <div class="col-auto mx-auto">
-            <a href="/"><button type="button" class="btn btn-lg btn-primary">GIVE ME ANOTHER</button></a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-auto mx-auto">
-            <button class="btn btn-info">SAVE THIS ONE</button>
-        </div>
-    </div>
+    
 </div>
 {% endblock %}
