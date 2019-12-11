@@ -1,21 +1,52 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
-    <br>
-    <p class="text-center" style="font-size: 30px;"><u>WORDS THAT CAN APPEAR</u></p>
-    <table class="table table-hover table-borderless col-md-4 mx-auto">
-        <tbody>
-            {% for word in words %}
-                <tr>
-                    <td><p class="text-uppercase text-muted my-auto" style="font-size: 25px;">{{word}}</p></td>
-                    <td class="float-right"><button class="btn btn-danger mt-auto">DELETE</button></td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td><button class="btn btn-success">ADD</button></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid bg-image" style="--url: url({{img.urls.full}})">
+        <div class="container">
+            <div class="row">
+                <p class="text-center" style="font-size: 30px;"><u>WORDS THAT CAN APPEAR:</u></p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-hover table-borderless col-md-4 mx-auto">
+                        <tbody>
+                            {% for word in words %}
+                                <tr>
+                                    <td><p class="text-uppercase my-auto" style="font-size: 25px;">{{word}}</p></td>
+                                    <td class="float-right"><button class="btn btn-danger mt-auto">DELETE</button></td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td><button class="btn btn-success">ADD</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-hover table-borderless col-md-4 mx-auto">
+                        <tbody>
+                            {% for base in bases %}
+                                <tr>
+                                    <td><p class="text-uppercase my-auto" style="font-size: 25px;">{{base}}</p></td>
+                                    <td class="float-right"><button class="btn btn-danger mt-auto">DELETE</button></td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td><button class="btn btn-success">ADD</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-auto mx-auto">
+                    {% filter upper %}
+                    <a href="{{img.links.html}}"><p>PHOTO BY {{img.user.name}} ON UNSPLASH</p></a>
+                    {% endfilter %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
