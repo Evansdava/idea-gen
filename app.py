@@ -39,10 +39,21 @@ def index():
 @app.route("/possibilities")
 def word_list():
     """Display an editable list of words that can appear"""
-    words = []
-    with open('words/words.txt') as f:
+    with open('words/noun.txt') as f:
         words = f.readlines()
-    return render_template('word_list.html', words=words)
+
+    with open('words/base.txt') as f:
+        bases = f.readlines()
+
+    params = {
+        "client_id": UNSPLASH_API_KEY,
+        "query": 'possibilities'
+    }
+
+    r = requests.get("https://api.unsplash.com/photos/random", params=params)
+    img = json.loads(r.content)
+
+    return render_template('word_list.html', words=words, bases=bases, img=img)
 
 
 @app.route("/saved")
@@ -54,4 +65,12 @@ def saved():
         "here is one that's really long but not too long probably",
         "more ideas go here and below"
         ]
-    return render_template('saved.html', ideas=ideas)
+
+    params = {
+        "client_id": UNSPLASH_API_KEY,
+        "query": 'saved'
+    }
+
+    r = requests.get("https://api.unsplash.com/photos/random", params=params)
+    img = json.loads(r.content)
+    return render_template('saved.html', ideas=ideas, img=img)
