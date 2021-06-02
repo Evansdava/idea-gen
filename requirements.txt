@@ -45,7 +45,7 @@ sortedcontainers==2.1.0
 soupsieve==1.9.5
 tempora==1.14.1
 typed-ast==1.4.0
-urllib3==1.25.7
+urllib3==1.26.5
 Werkzeug==0.16.0
 wrapt==1.11.2
 zc.lockfile==2.0
