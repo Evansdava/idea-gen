@@ -27,7 +27,7 @@ mccabe==0.6.1
 more-itertools==8.0.0
 mysqlclient==1.4.6
 nltk==3.4.5
-numpy==1.17.4
+numpy==1.22.0
 Pattern==3.6
 pdfminer.six==20191110
 portend==2.6
